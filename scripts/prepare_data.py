@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 from openpyxl import Workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
@@ -48,4 +49,9 @@ def prepare_sales_data(input_csv, output_xlsx):
     print(f"Successfully created: {output_xlsx} with Table 'Ventas_2024' and Metadata sheet.")
 
 if __name__ == "__main__":
-    prepare_sales_data('sales_data_2024.csv', 'Sales_2024_Formatted.xlsx')
+if len(sys.argv) < 3:
+        print("Uso: python scripts/prepare_data.py <ruta_entrada_csv> <nombre_salida_xlsx>")
+    else:
+        input_path = sys.argv[1]
+        output_path = sys.argv[2]
+        prepare_sales_data(input_path, output_path)
