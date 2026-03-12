@@ -47,5 +47,9 @@ Write-Host "File successfully uploaded! The Semantic Index will begin processing
 ### 3. Verify Cloud Sync
 Ensure the file appears in the web version of OneDrive. Microsoft Graph will automatically start indexing the file into the **Semantic Index**, making it available for Copilot prompts within 1-5 minutes.
 
+<img width="1537" height="1108" alt="sales report juan onedrive edited" src="https://github.com/user-attachments/assets/950c2ca7-b0ec-41e4-9704-c0c4a836b129" />
+
+[Infrastructure as Code (IaC) & API Integration: Executing a direct REST API 'PUT' request via PowerShell to automate the deployment of formatted Excel tables to OneDrive for Business]
+
 ## Why This Matters for Copilot
 Copilot for Excel *requires* the file to be stored in the cloud (OneDrive/SharePoint) and formatted as an Excel Table. This automation ensures both requirements are met without manual intervention.
