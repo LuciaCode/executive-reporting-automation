@@ -5,22 +5,25 @@
 [![Tech: Python & PowerShell](https://img.shields.io/badge/Tech-Python%20%26%20PowerShell-yellow)](scripts/)
 
 ## 🚀 Overview
-This repository demonstrates a production-grade workflow for transforming raw, disconnected sales data into executive-ready presentations. By leveraging **Microsoft 365 Copilot**, **Microsoft Graph**, and a **Retrieval-Augmented Generation (RAG)** architecture, we automate the "last mile" of business intelligence.
+This proof-of-concept demonstrates the seamless transformation of raw sales data into high-impact executive presentations using Microsoft 365 Copilot's orchestration capabilities. This project highlights an end-to-end automated workflow from a virtualized infrastructure to an AI-driven business intelligence output.
 
 This project specifically solves the challenge of data grounding for LLMs by programmatically structuring Excel data into a format that Copilot can reliably index and analyze.
 
-## 🏗️ Technical Architecture
-The solution follows a structured pipeline from local data preparation to cloud-based AI orchestration:
+## 🏗️ Technical Architecture & Retrieval-Augmented Generation (RAG)
+The orchestration of this solution relies on the **Microsoft 365 Copilot Architecture**, which integrates with organizational data via **Microsoft Graph**.
 
 ```mermaid
-graph LR
-    A[Raw CSV Data] --> B[prepare_data.py]
-    B --> C[Formatted Excel Table]
-    C --> D[PowerShell Upload]
-    D --> E[OneDrive / MS Graph]
-    E --> F[Semantic Indexing]
-    F --> G[Copilot Orchestration]
-    G --> H[Final PPT Deck]
+graph TD
+    A[User Prompt: Analyze Sales] --> B[Copilot Orchestrator]
+    B --> C{Grounding Phase}
+    C --> D[Microsoft Graph API]
+    C --> E[Semantic Index]
+    D --> F[Retrieval: Ventas_2024 Table]
+    E --> G[Contextual Understanding]
+    F --> H[Aggregated Context]
+    G --> H
+    H --> I[LLM: GPT-4]
+    I --> J[Actionable Response/Generated Deck]
 ```
 
 ### Key Components
@@ -39,24 +42,36 @@ graph LR
 └── requirements.txt        # Python dependency manifest
 ```
 
-## 🛠️ Quick Start
+## 🛠️ Environment Setup & Prerequisites
+This solution was designed and tested on an Azure Virtual Machine.
 
-### 1. Environment Setup
-Clone this repo to your Windows 11 Azure VM and install dependencies:
+### 1. Install Core Dependencies (Windows Package Manager):
+Ensure Git and Python are installed at the system level:
+
 ```bash
+winget install --id Git.Git -e --source winget
+winget install --id Python.Python.3.12 -e --source winget
+```
+(Note: Restart PowerShell after installation to refresh the system Path).
+
+### 2. Isolate the Environment (Best Practice):
+Create and activate a Python Virtual Environment to prevent global package conflicts:
+
+```bash
+python -m venv venv
+.\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
+### 3. Install Microsoft Graph PowerShell SDK:
 
-### 2. Data Transformation
-Execute the Python script to generate the formatted Excel file:
 ```bash
-python scripts/prepare_data.py data/sales_data_2024.csv Sales_2024_Formatted.xlsx
+Install-Module Microsoft.Graph -Scope CurrentUser -Force
 ```
 
-### 3. Automated Deployment
+### Automated Deployment
 Follow the instructions in [SETUP.md](SETUP.md) to upload your file to OneDrive using the **Microsoft Graph PowerShell SDK**.
 
-### 4. AI Orchestration
+### AI Orchestration
 Once synced, use the specialized prompts found in [POC_Documentation.md](docs/POC_Documentation.md) within Excel, Word, and PowerPoint.
 
 ## 📈 Success Metrics (KPIs)

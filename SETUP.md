@@ -7,7 +7,7 @@ This guide describes how to programmatically upload and sync the generated Excel
 1.  **PowerShell 7+** installed.
 2.  **Microsoft Graph PowerShell SDK** installed:
     ```powershell
-    Install-Module Microsoft.Graph -Scope CurrentUser
+    Install-Module Microsoft.Graph -Scope CurrentUser -Force
     ```
 3.  **App Registration/Permissions:** Ensure the user has `Files.ReadWrite` permissions.
 
@@ -24,22 +24,24 @@ Use the following PowerShell script to upload the file to Juan Perez's OneDrive:
 
 ```powershell
 # 1. Sign in to Microsoft Graph
-Connect-MgGraph -Scopes "Files.ReadWrite"
+Connect-MgGraph -Scopes "Files.ReadWrite, User.Read"
+```
+This will open a browser window. Log in with Juan Perez's credentials and accept the requested permissions. Once it says “Authentication complete,” you can close the browser and return to the terminal.
 
-# 2. Define File Paths
+```powershell
+# 2. Get the current authenticated user
+$currentUser = (Get-MgContext).Account
+
+# 3. Define the local file path
 $localFilePath = ".\Sales_2024_Formatted.xlsx"
-$driveItemPath = "/SalesReports/Sales_2024_Formatted.xlsx"
 
-# 3. Upload the file to OneDrive
-$fileStream = [System.IO.File]::OpenRead($localFilePath)
-$uploadParams = @{
-    DriveId = (Get-MgUserDrive -UserId "juan.perez@tenant.onmicrosoft.com").Id
-    Path = $driveItemPath
-    InputStream = $fileStream
-}
-Set-MgDriveItemContent @uploadParams
+# 3. Define the exact Graph API URI (Notice the "root:/" syntax to target OneDrive)
+$uri = "https://graph.microsoft.com/v1.0/users/$currentUser/drive/root:/SalesReports/Sales_2024_Formatted.xlsx:/content"
 
-Write-Host "File successfully uploaded to OneDrive. Copilot indexing will begin shortly."
+# 4. Execute the upload via REST API
+Write-Host "Starting direct API upload to OneDrive for $currentUser..."
+Invoke-MgGraphRequest -Method PUT -Uri $uri -InputFilePath $localFilePath -ContentType "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+Write-Host "File successfully uploaded! The Semantic Index will begin processing it."
 ```
 
 ### 3. Verify Cloud Sync
