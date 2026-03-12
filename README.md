@@ -68,6 +68,11 @@ pip install -r requirements.txt
 Install-Module Microsoft.Graph -Scope CurrentUser -Force
 ```
 
+<img width="1537" height="1088" alt="grahp connection request edited" src="https://github.com/user-attachments/assets/c0f9dae7-6002-456a-a2df-e36ee368aa9d" />
+
+[Identity Management: Authenticating the Microsoft Graph Command Line Tools with specific 'Files.ReadWrite' scoped permissions for secure data handling.]
+
+
 ### Automated Deployment
 Follow the instructions in [SETUP.md](SETUP.md) to upload your file to OneDrive using the **Microsoft Graph PowerShell SDK**.
 
