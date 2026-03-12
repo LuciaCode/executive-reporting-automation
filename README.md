@@ -80,8 +80,11 @@ Once synced, use the specialized prompts found in [POC_Documentation.md](docs/PO
 - **Consistency:** Unified corporate branding and narrative across all generated slides.
 
 ## 👤 Author
-**Senior M365 Solutions Architect**  
+**Your company user**  
 Project Lead for Juan Perez (Azure VM Environment)
+
+## The Value Proposition
+By programmatically converting raw CSVs into formatted Excel Tables and deploying them via the Microsoft Graph API, we bridge the gap between "Raw Information" and "AI Understanding." This workflow doesn't just save time—it establishes a secure Source of Truth, enabling high-value AI capabilities while maintaining strict corporate data governance.
 
 ---
 *Disclaimer: This project requires an active Microsoft 365 Copilot license and appropriate tenant permissions for Microsoft Graph API access.*
