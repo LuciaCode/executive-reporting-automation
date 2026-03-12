@@ -5,25 +5,23 @@
 [![Tech: Python & PowerShell](https://img.shields.io/badge/Tech-Python%20%26%20PowerShell-yellow)](scripts/)
 
 ## 🚀 Overview
-This proof-of-concept demonstrates the seamless transformation of raw sales data into high-impact executive presentations using Microsoft 365 Copilot's orchestration capabilities. This project highlights an end-to-end automated workflow from a virtualized infrastructure to an AI-driven business intelligence output.
+This repository shows a production-level workflow for transforming raw sales data into business-relevant presentations and documents. It leverages **Microsoft 365 Copilot**, **Microsoft Graph**, and a **retrieval-augmented generation (RAG)** architecture.
 
 This project specifically solves the challenge of data grounding for LLMs by programmatically structuring Excel data into a format that Copilot can reliably index and analyze.
 
 ## 🏗️ Technical Architecture & Retrieval-Augmented Generation (RAG)
-The orchestration of this solution relies on the **Microsoft 365 Copilot Architecture**, which integrates with organizational data via **Microsoft Graph**.
+The solution follows a structured pipeline from local data preparation to cloud-based AI orchestration:
+
 
 ```mermaid
-graph TD
-    A[User Prompt: Analyze Sales] --> B[Copilot Orchestrator]
-    B --> C{Grounding Phase}
-    C --> D[Microsoft Graph API]
-    C --> E[Semantic Index]
-    D --> F[Retrieval: Ventas_2024 Table]
-    E --> G[Contextual Understanding]
-    F --> H[Aggregated Context]
-    G --> H
-    H --> I[LLM: GPT-4]
-    I --> J[Actionable Response/Generated Deck]
+graph LR
+    A[Raw CSV Data] --> B[prepare_data.py]
+    B --> C[Formatted Excel Table]
+    C --> D[PowerShell Upload]
+    D --> E[OneDrive / MS Graph]
+    E --> F[Semantic Indexing]
+    F --> G[Copilot Orchestration]
+    G --> H[Final PPT Deck]
 ```
 
 ### Key Components
@@ -43,7 +41,7 @@ graph TD
 ```
 
 ## 🛠️ Environment Setup & Prerequisites
-This solution was designed and tested on an Azure Virtual Machine.
+This solution was designed and tested on an Azure Virtual Machine. Clone this repo to your Windows 11 Azure VM.
 
 ### 1. Install Core Dependencies (Windows Package Manager):
 Ensure Git and Python are installed at the system level:
