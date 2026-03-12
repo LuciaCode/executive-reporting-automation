@@ -38,13 +38,19 @@ graph TD
 **Goal:** Extract insights and trends from the `Sales_2024` table.
 > **Prompt:** *"Analyze this table and identify the top 3 product categories by total revenue. Additionally, calculate the quarterly growth rate for each category and highlight any significant anomalies in the 'Units Sold' column for Q3 and Q4."*
 
+<img width="1531" height="1122" alt="question1 copilot edited" src="https://github.com/user-attachments/assets/31f739a4-9338-4661-a62e-a0d390707241" />
+
 ### 2. Word (Executive Summary - The "Bridge")
 **Goal:** Synthesize Excel insights into a structured narrative for PowerPoint to reference.
 > **Prompt:** *"Based on the Sales_2024 Excel file, write a 3-page executive summary. Include a section for 'Top 3 Revenue Drivers,' a 'Quarterly Trend Analysis' with specific percentages, and a 'Strategic Outlook for 2025.' Ensure the tone is data-driven and suitable for a Board of Directors meeting."*
 
+<img width="1543" height="1131" alt="question2 copilot edited" src="https://github.com/user-attachments/assets/a4f86519-998b-4830-838a-ccd2428ffe0f" />
+
 ### 3. PowerPoint (Visual Presentation)
 **Goal:** Generate the final deck using the Word summary as the source of truth.
 > **Prompt:** *"Create a 10-slide professional presentation based on [File Name: Executive_Summary_2024.docx]. Use a modern corporate theme. Ensure each slide includes a high-level takeaway, visual placeholders for charts, and speaker notes that expand on the data points."*
+
+<img width="1538" height="1136" alt="question3 copilot edited" src="https://github.com/user-attachments/assets/a3e22736-c8e3-4221-bb75-4577418fd61d" />
 
 ---
 
