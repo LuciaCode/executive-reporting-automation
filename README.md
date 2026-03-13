@@ -43,6 +43,19 @@ graph LR
 ## 🛠️ Environment Setup & Prerequisites
 This solution was designed and tested on an Azure Virtual Machine. Clone this repo to your Windows 11 Azure VM.
 
+To align this POC with enterprise standards, Microsoft Intune was leveraged to automate the deployment of the Microsoft 365 Apps for business (Word, Excel, PowerPoint...) to the managed endpoints.
+
+### Deployment of the Microsoft 365 Apps Strategy:
+1. Application Packaging: Utilized the Microsoft 365 Apps suite for Windows 10 and later via the Microsoft Intune Admin Center.
+2. Configuration Profile:
+- Update Channel: Configured to the Current Channel to ensure immediate access to the latest AI/Copilot feature updates.
+- Architecture: Standardized on 64-bit for optimal performance of AI-driven data processing in Excel.
+3. Silent Installation: Apps were assigned as Required to the user group, ensuring that as soon as the Azure VM joined the tenant, the tools were deployed in the background without user intervention.
+
+  <img width="1597" height="1101" alt="all recently added microsoft apps edited" src="https://github.com/user-attachments/assets/7db8323a-a29b-465b-a8e8-ba41b8697f02" />
+[Microsoft 365 applications packaging via the Microsoft Intune Admin Center. Remote desktop connection]
+
+
 ### 1. Install Core Dependencies (Windows Package Manager):
 Ensure Git and Python are installed at the system level:
 
