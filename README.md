@@ -9,6 +9,13 @@ This repository shows a production-level workflow for transforming raw sales dat
 
 This project specifically solves the challenge of data grounding for LLMs by programmatically structuring Excel data into a format that Copilot can reliably index and analyze.
 
+### Project Context: 
+This project is the **Phase 2** evolution of my cloud infrastructure journey. While the previous project focused on building the "Foundations," this phase focuses on "Intelligence and Automation."
+- **Phase 1**: [Azure Intune Lab: https://github.com/LuciaCode/azure-intune-lab]
+Focus: Established the core Azure Infrastructure, Entra ID (Azure AD) identity governance, and Microsoft Intune- Microswoft Defender endpoint management.
+- **Phase 2**: Executive Reporting Automation (This Repository)
+Focus: Leveraging the Phase 1 infrastructure to deploy Python-based data pipelines and orchestrate Microsoft 365 Copilot for AI-driven business intelligence.
+
 ## 🏗️ Technical Architecture & Retrieval-Augmented Generation (RAG)
 The solution follows a structured pipeline from local data preparation to cloud-based AI orchestration:
 
