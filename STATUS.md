@@ -26,8 +26,8 @@
 - [ ] **End-to-End Validation:** Execute the `prepare_data.py` and PowerShell upload script in the target Azure VM environment.
 - [ ] **Copilot Verification:** Confirm that Copilot for Excel correctly identifies the `Ventas_2024` table and provides accurate insights based on the Metadata sheet.
 - [ ] **Final Deck Generation:** Complete the PowerPoint generation phase using the Word "Bridge" document.
-- [ ] **Portfolio Polish:** Add a high-level `README.md` with project screenshots and a "Lessons Learned" section.
+- [x] **Portfolio Polish:** Added a high-level `README.md` and linked the repository to the LuciaCode GitHub profile.
 
 ---
-**Current Status:** 🟢 **On Track**
-The core automation scripts and technical documentation are complete. The project is ready for the deployment and validation phase.
+**Current Status:** 🟢 **On Track (Deployed to GitHub)**
+The core automation scripts, technical documentation, and GitHub repository structure are complete. The project is ready for the deployment and validation phase on the Azure VM.
