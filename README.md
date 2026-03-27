@@ -16,6 +16,18 @@ Focus: Established the core Azure Infrastructure, Entra ID (Azure AD) identity g
 - **Phase 2**: Executive Reporting Automation (This Repository)
 Focus: Leveraging the Phase 1 infrastructure to deploy Python-based data pipelines and orchestrate Microsoft 365 Copilot for AI-driven business intelligence.
 
+## 🛠️ Deployment Options
+
+This project supports two deployment workflows depending on your preference:
+
+### Option A: Manual Setup
+Ideal for understanding the step-by-step interaction between Python, PowerShell, and the Graph API.
+👉 [View Manual Setup Guide (SETUP.md)](./SETUP.md)
+
+### Option B: Automated IaC (Engineering Path) 🚀
+Recommended for rapid deployment and production-ready environments. Uses **PowerShell DSC** to automatically provision all dependencies and prevent configuration drift.
+👉 [View Automated DSC Guide (DSC_GUIDE.md)](./DSC_GUIDE.md)
+
 ## 🏗️ Technical Architecture & Retrieval-Augmented Generation (RAG)
 The solution follows a structured pipeline from local data preparation to cloud-based AI orchestration:
 
@@ -38,10 +50,15 @@ graph LR
 
 ## 📂 Repository Structure
 ```text
-├── scripts/                # Data transformation (Python) and Sync (PowerShell)
+├── infrastructure/
+│   ├── VMConfiguration.ps1     # The main DSC script
+│   └── localhost.mof           # The compiled file (generated automatically)
+├── scripts/                
+│   └── prepare_data.py         # Data transformation logic (CSV to Copilot-ready Excel)
 ├── docs/                   # Deep-dive POC documentation and RAG architecture
 ├── data/                   # Raw sales datasets (CSV)
 ├── README.md               # Main project entry point
+├── DSC_GUIDE.md            # Desired State Configuration (DSC) guide
 ├── SETUP.md                # Environment & Deployment guide
 ├── STATUS.md               # Real-time project milestones
 └── requirements.txt        # Python dependency manifest
