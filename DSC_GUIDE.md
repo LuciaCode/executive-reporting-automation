@@ -40,6 +40,23 @@ Push the configuration to the local machine. This will trigger the silent instal
 Start-DscConfiguration -Path .\ExecutiveReportingConfig -Wait -Verbose -Force
 ```
 
+## Troubleshooting: WinRM and Firewall Constraints
+
+When running DSC on a new Azure VM, you might encounter `MaxEnvelopeSize` quotas or `Access Denied` errors caused by Windows marking the network as "Public". 
+
+Run these commands in an **Elevated PowerShell (Run as Administrator)** to prepare the WinRM service before executing the DSC configuration:
+
+```powershell
+# 1. Change all current network profiles to "Private" to allow WinRM traffic
+Get-NetConnectionProfile | Set-NetConnectionProfile -NetworkCategory Private
+
+# 2. Increase the WinRM message size limit (MaxEnvelopeSize) to 8MB
+Set-Item -Path WSMan:\localhost\MaxEnvelopeSizekb -Value 8192
+
+# 3. Restart the WinRM service to apply the new limits
+Restart-Service WinRM
+```
+
 ## 🔍 What the DSC Ensures:
 *Prerequisites*: Git and Python 3.12 presence.
 *PowerShell Modules*: Microsoft.Graph.
